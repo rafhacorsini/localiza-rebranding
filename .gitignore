@@ -1,0 +1,11 @@
+node_modules
+dist
+
+# imagens brutas (só as versões otimizadas em public/ vão pro site)
+assets-src/
+*.png
+!public/**/*.png
+
+# configs locais
+.claude/
+.vercel

@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Localiza Redesign | Conceito</title>
+    <meta name="description" content="Redesign conceitual do site da Localiza, feito como estudo de UI e motion por Rafhael Corsini. Sem vínculo oficial com a marca." />
+    <meta name="theme-color" content="#0b0d0c" />
+    <!-- projeto conceitual: não deve aparecer em buscadores como se fosse o site oficial -->
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0d0c'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%237bdc1e'/%3E%3C/svg%3E" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- fundo escuro e página invisível até o CSS carregar: evita o flash branco no F5 -->
+    <style>
+      html { background: #0b0d0c; }
+      body { opacity: 0; }
+    </style>
+    <link rel="stylesheet" href="/node_modules/lenis/dist/lenis.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      imagesrcset="/images/hero-bg-960.webp 960w, /images/hero-bg-1672.webp 1672w"
+      imagesizes="100vw"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      imagesrcset="/images/hero-car-960.webp 960w, /images/hero-car-1672.webp 1672w"
+      imagesizes="100vw"
+    />
+  </head>
+  <body class="is-loading">
+    <!-- Header -->
+    <header class="header" data-header>
+      <div class="header__inner">
+        <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu" data-menu-toggle>
+          <span class="menu-btn__line"></span>
+          <span class="menu-btn__line"></span>
+        </button>
+
+        <a class="logo" href="/" aria-label="Localiza, página inicial">
+          <img class="logo__light" src="/images/localiza-logo.png" alt="Localiza" width="167" height="34" />
+          <img class="logo__dark" src="/images/localiza-logo-dark.png" alt="" width="167" height="34" aria-hidden="true" />
+        </a>
+
+        <a class="account" href="#login">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="8.5" r="4" />
+            <path d="M4.5 20.5c1.2-3.6 4-5.5 7.5-5.5s6.3 1.9 7.5 5.5" />
+          </svg>
+          <span>login/cadastrar</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Fullscreen menu -->
+    <div class="menu" id="menu" aria-hidden="true" data-menu>
+      <div class="menu__inner">
+        <nav class="menu__nav" aria-label="Principal">
+          <ul>
+            <li><a href="#"><span class="menu__idx">01</span><span class="menu__label">Aluguel de carros</span></a></li>
+            <li><a href="#"><span class="menu__idx">02</span><span class="menu__label">Carro por assinatura</span></a></li>
+            <li><a href="#"><span class="menu__idx">03</span><span class="menu__label">Seminovos</span></a></li>
+            <li><a href="#"><span class="menu__idx">04</span><span class="menu__label">Empresas</span></a></li>
+            <li><a href="#"><span class="menu__idx">05</span><span class="menu__label">Ofertas</span></a></li>
+          </ul>
+        </nav>
+        <div class="menu__aside">
+          <div class="menu__block">
+            <p class="menu__eyebrow">Ajuda</p>
+            <a href="#">Central de atendimento</a>
+            <a href="#">Encontre uma agência</a>
+            <a href="#">Gerenciar reserva</a>
+          </div>
+          <div class="menu__block">
+            <p class="menu__eyebrow">Siga</p>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" data-hero>
+        <div class="hero__media" data-hero-media>
+          <!-- camada 1: fundo -->
+          <img
+            class="hero__layer hero__bg"
+            data-hero-layer
+            src="/images/hero-bg-1672.webp"
+            srcset="/images/hero-bg-960.webp 960w, /images/hero-bg-1672.webp 1672w"
+            sizes="100vw"
+            alt="SUV escuro parado de frente em um campo verde ao entardecer"
+            fetchpriority="high"
+            decoding="async"
+          />
+
+          <!-- camada 2: título (passa por trás do carro) -->
+          <div class="hero__content" data-hero-content>
+            <h1 class="hero__title" data-hero-title>
+              <span class="hero__line">Seu caminho.</span>
+              <span class="hero__line">Do seu jeito.</span>
+            </h1>
+          </div>
+
+          <!-- camada 3: só o carro, recortado da mesma foto (alinhamento perfeito) -->
+          <img
+            class="hero__layer hero__car"
+            data-hero-layer
+            src="/images/hero-car-1672.webp"
+            srcset="/images/hero-car-960.webp 960w, /images/hero-car-1672.webp 1672w"
+            sizes="100vw"
+            alt=""
+            aria-hidden="true"
+            decoding="async"
+          />
+
+          <div class="hero__shade" data-hero-shade></div>
+        </div>
+
+        <!-- Cards de vidro -->
+        <div class="hero__cards" data-hero-bottom>
+          <a class="glass-card glass-card--rent" href="#" data-card>
+            <span class="glass-card__head">
+              <span class="glass-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4" /><path d="M10.8 12.2 19 4M16 7l2.5 2.5M14 9l2 2" /></svg>
+              </span>
+              <span class="glass-card__arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" /></svg>
+              </span>
+            </span>
+            <span class="glass-card__title">Aluguel de carros</span>
+            <span class="glass-card__text">Retire hoje e devolva quando quiser, em todo o Brasil.</span>
+          </a>
+
+          <a class="glass-card glass-card--sub" href="#" data-card>
+            <span class="glass-card__head">
+              <span class="glass-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14.3 4.9M4 12a8 8 0 0 1 14.3-4.9" /><path d="M18.5 3v4.2h-4.2M5.5 21v-4.2h4.2" /></svg>
+              </span>
+              <span class="glass-card__arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" /></svg>
+              </span>
+            </span>
+            <span class="glass-card__title">Carro por assinatura</span>
+            <span class="glass-card__text">Carro zero com IPVA, seguro e manutenção inclusos.</span>
+          </a>
+
+          <a class="glass-card glass-card--used" href="#" data-card>
+            <span class="glass-card__head">
+              <span class="glass-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8 7.5 9.5 4.3-1.5 7.5-4.9 7.5-9.5V6L12 3Z" /><path d="m8.8 12 2.2 2.2 4.2-4.4" /></svg>
+              </span>
+              <span class="glass-card__arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" /></svg>
+              </span>
+            </span>
+            <span class="glass-card__title">Seminovos</span>
+            <span class="glass-card__text">Revisados, com procedência e garantia.</span>
+          </a>
+
+          <a class="btn" href="#reservar" data-card>
+            <span class="btn__label">Reservar agora</span>
+            <span class="btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2 — Reserva -->
+      <section class="booking" id="reservar" data-booking data-header-theme="light">
+        <div class="booking__inner">
+          <div class="booking__head">
+            <div>
+              <p class="booking__eyebrow" data-booking-reveal>Reserve em poucos cliques</p>
+              <h2 class="booking__title" data-booking-reveal>Para onde vamos?</h2>
+            </div>
+
+            <a class="booking__monthly" href="#" data-booking-reveal>
+              <span class="booking__monthly-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M14.6 9.2c-.4-.9-1.4-1.5-2.6-1.5-1.5 0-2.6.8-2.6 2s1.1 1.7 2.6 2 2.7.8 2.7 2.1-1.2 2.1-2.7 2.1c-1.3 0-2.3-.6-2.7-1.6M12 6.2v1.5M12 16v1.6" /></svg>
+              </span>
+              <span>Economize com o aluguel mensal</span>
+              <span class="booking__monthly-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </span>
+            </a>
+          </div>
+
+          <form class="search" data-search novalidate>
+            <label class="search__field search__field--place" data-search-field>
+              <span class="search__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z" /><circle cx="12" cy="10" r="2.4" /></svg></span>
+              <span class="search__body">
+                <span class="search__label">Local de retirada</span>
+                <input type="text" name="local" placeholder="Cidade, aeroporto ou agência" autocomplete="off" />
+              </span>
+            </label>
+
+            <button type="button" class="search__field search__field--date" data-search-field data-picker="pickup-date" aria-haspopup="dialog" aria-expanded="false">
+              <span class="search__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="3" /><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" /></svg></span>
+              <span class="search__body">
+                <span class="search__label">Retirada</span>
+                <span class="search__value" data-value="pickup-date"></span>
+              </span>
+              <input type="hidden" name="retirada-data" data-input="pickup-date" />
+            </button>
+
+            <button type="button" class="search__field search__field--time" data-search-field data-picker="pickup-time" aria-haspopup="dialog" aria-expanded="false">
+              <span class="search__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg></span>
+              <span class="search__body">
+                <span class="search__label">Hora</span>
+                <span class="search__value" data-value="pickup-time"></span>
+              </span>
+              <input type="hidden" name="retirada-hora" data-input="pickup-time" />
+            </button>
+
+            <button type="button" class="search__field search__field--date" data-search-field data-picker="return-date" aria-haspopup="dialog" aria-expanded="false">
+              <span class="search__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="3" /><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" /></svg></span>
+              <span class="search__body">
+                <span class="search__label">Devolução</span>
+                <span class="search__value" data-value="return-date"></span>
+              </span>
+              <input type="hidden" name="devolucao-data" data-input="return-date" />
+            </button>
+
+            <button type="button" class="search__field search__field--time" data-search-field data-picker="return-time" aria-haspopup="dialog" aria-expanded="false">
+              <span class="search__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></svg></span>
+              <span class="search__body">
+                <span class="search__label">Hora</span>
+                <span class="search__value" data-value="return-time"></span>
+              </span>
+              <input type="hidden" name="devolucao-hora" data-input="return-time" />
+            </button>
+
+            <button class="search__submit" type="submit" data-search-field>
+              <span>Buscar carros</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </button>
+
+            <div class="picker" role="dialog" aria-modal="false" aria-label="Escolher data e hora" data-picker-pop></div>
+          </form>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 3 — Frota -->
+      <section class="fleet" id="frota" data-fleet data-header-theme="light">
+        <div class="fleet__pin" data-fleet-pin>
+          <div class="fleet__head">
+            <div>
+              <p class="fleet__eyebrow">Nossa frota</p>
+              <h2 class="fleet__title">Um carro para<br />cada caminho.</h2>
+            </div>
+
+            <div class="fleet__tabs" role="tablist" aria-label="Categorias" data-fleet-tabs>
+              <span class="fleet__tab-indicator" data-fleet-indicator aria-hidden="true"></span>
+              <button type="button" class="fleet__tab is-active" role="tab" aria-selected="true" tabindex="0" data-fleet-tab="0">Econômico</button>
+              <button type="button" class="fleet__tab" role="tab" aria-selected="false" tabindex="-1" data-fleet-tab="1">Compacto</button>
+              <button type="button" class="fleet__tab" role="tab" aria-selected="false" tabindex="-1" data-fleet-tab="2">SUV</button>
+              <button type="button" class="fleet__tab" role="tab" aria-selected="false" tabindex="-1" data-fleet-tab="3">Executivo</button>
+              <button type="button" class="fleet__tab" role="tab" aria-selected="false" tabindex="-1" data-fleet-tab="4">Elétrico</button>
+            </div>
+          </div>
+
+          <div class="fleet__stage">
+            <aside class="fleet__gallery" aria-label="Mais modelos da categoria">
+              <p class="fleet__gallery-label">Mais opções</p>
+              <div class="fleet__groups">
+                <div class="fleet__thumbs" data-fleet-thumbs>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/renault-kwid.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Renault Kwid</span>
+                  </a>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/fiat-argo.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Fiat Argo</span>
+                  </a>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/chevrolet-onix.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Chevrolet Onix</span>
+                  </a>
+                  <a class="fleet__all" href="#" data-fleet-thumb>
+                    <span>Ver todos os econômicos <span class="fleet__all-count">(5)</span></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </a>
+                </div>
+                <div class="fleet__thumbs" data-fleet-thumbs>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/hyundai-hb20s.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Hyundai HB20S</span>
+                  </a>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/chevrolet-onix-plus.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Chevrolet Onix Plus</span>
+                  </a>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/honda-city-hatch.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Honda City Hatch</span>
+                  </a>
+                  <a class="fleet__all" href="#" data-fleet-thumb>
+                    <span>Ver todos os compactos <span class="fleet__all-count">(5)</span></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </a>
+                </div>
+                <div class="fleet__thumbs" data-fleet-thumbs>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/vw-t-cross.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">VW T-Cross</span>
+                  </a>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/jeep-renegade.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Jeep Renegade</span>
+                  </a>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/chevrolet-tracker.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Chevrolet Tracker</span>
+                  </a>
+                  <a class="fleet__all" href="#" data-fleet-thumb>
+                    <span>Ver todos os SUVs <span class="fleet__all-count">(8)</span></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </a>
+                </div>
+                <div class="fleet__thumbs" data-fleet-thumbs>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/honda-hr-v.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Honda HR-V</span>
+                  </a>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/vw-taos.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">VW Taos</span>
+                  </a>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/toyota-yaris-cross.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">Toyota Yaris Cross</span>
+                  </a>
+                  <a class="fleet__all" href="#" data-fleet-thumb>
+                    <span>Ver todos os executivos <span class="fleet__all-count">(4)</span></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </a>
+                </div>
+                <div class="fleet__thumbs" data-fleet-thumbs>
+                  <a class="fleet__thumb" href="#" data-fleet-thumb>
+                    <span class="fleet__thumb-img"><img src="/images/models/byd-song.webp" alt="" loading="lazy" decoding="async" /></span>
+                    <span class="fleet__thumb-name">BYD Song</span>
+                  </a>
+                  <a class="fleet__all" href="#" data-fleet-thumb>
+                    <span>Ver todos os elétricos e híbridos <span class="fleet__all-count">(2)</span></span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </a>
+                </div>
+              </div>
+            </aside>
+            <span class="fleet__shadow" data-fleet-shadow aria-hidden="true"></span>
+            <img class="fleet__car" data-fleet-car src="/images/fleet/economico.webp" srcset="/images/fleet/economico-900.webp 900w, /images/fleet/economico.webp 1467w" sizes="(max-width: 900px) 90vw, 45vw" alt="Econômico: Fiat Mobi, Renault Kwid ou similar" width="1467" height="881" style="--s: 0.78" decoding="async" />
+            <img class="fleet__car" data-fleet-car src="/images/fleet/compacto.webp" srcset="/images/fleet/compacto-900.webp 900w, /images/fleet/compacto.webp 1512w" sizes="(max-width: 900px) 90vw, 45vw" alt="Compacto: VW Polo, Hyundai HB20 ou similar" width="1512" height="825" style="--s: 0.88" decoding="async" />
+            <img class="fleet__car" data-fleet-car src="/images/fleet/suv.webp" srcset="/images/fleet/suv-900.webp 900w, /images/fleet/suv.webp 1495w" sizes="(max-width: 900px) 90vw, 45vw" alt="SUV: Jeep Compass, VW T-Cross ou similar" width="1495" height="882" style="--s: 0.96" decoding="async" />
+            <img class="fleet__car" data-fleet-car src="/images/fleet/executivo.webp" srcset="/images/fleet/executivo-900.webp 900w, /images/fleet/executivo.webp 1532w" sizes="(max-width: 900px) 90vw, 45vw" alt="Executivo: Toyota Corolla, Honda Civic ou similar" width="1532" height="757" style="--s: 1" decoding="async" />
+            <img class="fleet__car" data-fleet-car src="/images/fleet/eletrico.webp" srcset="/images/fleet/eletrico-900.webp 900w, /images/fleet/eletrico.webp 1526w" sizes="(max-width: 900px) 90vw, 45vw" alt="Elétrico: BYD Dolphin ou similar" width="1526" height="830" style="--s: 0.92" decoding="async" />
+          </div>
+
+          <div class="fleet__foot">
+            <div class="fleet__meta">
+              <div class="fleet__names">
+                <span class="fleet__word" data-fleet-word>Econômico</span>
+                <span class="fleet__word" data-fleet-word>Compacto</span>
+                <span class="fleet__word" data-fleet-word>SUV</span>
+                <span class="fleet__word" data-fleet-word>Executivo</span>
+                <span class="fleet__word" data-fleet-word>Elétrico</span>
+              </div>
+              <div class="fleet__infos">
+              <div class="fleet__info" data-fleet-info>
+                <p class="fleet__model">Fiat Mobi, Renault Kwid ou similar</p>
+                <ul class="fleet__specs">
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19c.8-3.2 2.9-5 5.5-5s4.7 1.8 5.5 5" /><path d="M15.5 5.2a3.2 3.2 0 0 1 0 5.6M17.5 14.4c1.5.7 2.5 2.3 3 4.6" /></svg></span>5 pessoas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="7.5" width="14" height="12" rx="2.5" /><path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2M9 11v5M15 11v5" /></svg></span>2 malas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.6" /><circle cx="12" cy="6" r="1.6" /><circle cx="18" cy="6" r="1.6" /><circle cx="6" cy="18" r="1.6" /><circle cx="12" cy="18" r="1.6" /><path d="M6 7.6v8.8M12 7.6v8.8M18 7.6V12H6" /></svg></span>Manual</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5" /></svg></span>Ar-condicionado</li>
+                </ul>
+              </div>
+              <div class="fleet__info" data-fleet-info>
+                <p class="fleet__model">VW Polo, Hyundai HB20 ou similar</p>
+                <ul class="fleet__specs">
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19c.8-3.2 2.9-5 5.5-5s4.7 1.8 5.5 5" /><path d="M15.5 5.2a3.2 3.2 0 0 1 0 5.6M17.5 14.4c1.5.7 2.5 2.3 3 4.6" /></svg></span>5 pessoas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="7.5" width="14" height="12" rx="2.5" /><path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2M9 11v5M15 11v5" /></svg></span>2 malas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.6" /><circle cx="12" cy="6" r="1.6" /><circle cx="18" cy="6" r="1.6" /><circle cx="6" cy="18" r="1.6" /><circle cx="12" cy="18" r="1.6" /><path d="M6 7.6v8.8M12 7.6v8.8M18 7.6V12H6" /></svg></span>Automático</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5" /></svg></span>Ar-condicionado</li>
+                </ul>
+              </div>
+              <div class="fleet__info" data-fleet-info>
+                <p class="fleet__model">Jeep Compass, VW T-Cross ou similar</p>
+                <ul class="fleet__specs">
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19c.8-3.2 2.9-5 5.5-5s4.7 1.8 5.5 5" /><path d="M15.5 5.2a3.2 3.2 0 0 1 0 5.6M17.5 14.4c1.5.7 2.5 2.3 3 4.6" /></svg></span>5 pessoas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="7.5" width="14" height="12" rx="2.5" /><path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2M9 11v5M15 11v5" /></svg></span>3 malas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.6" /><circle cx="12" cy="6" r="1.6" /><circle cx="18" cy="6" r="1.6" /><circle cx="6" cy="18" r="1.6" /><circle cx="12" cy="18" r="1.6" /><path d="M6 7.6v8.8M12 7.6v8.8M18 7.6V12H6" /></svg></span>Automático</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5" /></svg></span>Ar-condicionado</li>
+                </ul>
+              </div>
+              <div class="fleet__info" data-fleet-info>
+                <p class="fleet__model">Toyota Corolla, Honda Civic ou similar</p>
+                <ul class="fleet__specs">
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19c.8-3.2 2.9-5 5.5-5s4.7 1.8 5.5 5" /><path d="M15.5 5.2a3.2 3.2 0 0 1 0 5.6M17.5 14.4c1.5.7 2.5 2.3 3 4.6" /></svg></span>5 pessoas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="7.5" width="14" height="12" rx="2.5" /><path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2M9 11v5M15 11v5" /></svg></span>3 malas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.6" /><circle cx="12" cy="6" r="1.6" /><circle cx="18" cy="6" r="1.6" /><circle cx="6" cy="18" r="1.6" /><circle cx="12" cy="18" r="1.6" /><path d="M6 7.6v8.8M12 7.6v8.8M18 7.6V12H6" /></svg></span>Automático</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5 12 7l2.5-2.5M9.5 19.5 12 17l2.5 2.5" /></svg></span>Ar-condicionado</li>
+                </ul>
+              </div>
+              <div class="fleet__info" data-fleet-info>
+                <p class="fleet__model">BYD Dolphin ou similar</p>
+                <ul class="fleet__specs">
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19c.8-3.2 2.9-5 5.5-5s4.7 1.8 5.5 5" /><path d="M15.5 5.2a3.2 3.2 0 0 1 0 5.6M17.5 14.4c1.5.7 2.5 2.3 3 4.6" /></svg></span>5 pessoas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="7.5" width="14" height="12" rx="2.5" /><path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2M9 11v5M15 11v5" /></svg></span>2 malas</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1.6" /><circle cx="12" cy="6" r="1.6" /><circle cx="18" cy="6" r="1.6" /><circle cx="6" cy="18" r="1.6" /><circle cx="12" cy="18" r="1.6" /><path d="M6 7.6v8.8M12 7.6v8.8M18 7.6V12H6" /></svg></span>Automático</li>
+                  <li><span class="fleet__spec-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3 5.5 13.5H12L11 21l7.5-10.5H12L13 3Z" /></svg></span>100% elétrico</li>
+                </ul>
+              </div>
+              </div>
+            </div>
+
+            <a class="fleet__cta" href="#reservar">
+              <span>Reservar <span data-fleet-cta-name>Econômico</span></span>
+              <span class="fleet__cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4 — Serviços -->
+      <section class="services" id="servicos" data-services data-header-theme="light">
+        <div class="services__inner">
+          <div class="services__intro">
+            <div>
+              <p class="services__eyebrow" data-services-reveal>Nossos serviços</p>
+              <h2 class="services__title" data-services-reveal>Muito mais do que<br />alugar um carro.</h2>
+            </div>
+
+            <div class="services__bottom">
+              <p class="services__lead" data-services-reveal>
+                Do fim de semana na estrada ao carro novo na garagem. Escolha o jeito de dirigir que combina com você.
+              </p>
+              <a class="services__cta" href="#reservar" data-services-reveal>
+                <span>Reservar agora</span>
+                <span class="services__cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="services__cards">
+            <a class="svc-card svc-card--main" href="#reservar" data-svc-card>
+              <img class="svc-card__img" src="/images/services/aluguel.webp" srcset="/images/services/aluguel-600.webp 600w, /images/services/aluguel.webp 940w" sizes="(max-width: 900px) 100vw, 28vw" alt="Pessoa colocando a mala no porta-malas de um SUV no aeroporto ao entardecer" loading="lazy" decoding="async" />
+              <span class="svc-card__shade" aria-hidden="true"></span>
+              <span class="svc-card__title">Aluguel de carros</span>
+              <span class="svc-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" /></svg></span>
+            </a>
+
+            <div class="services__col">
+              <a class="svc-card svc-card--half" href="#" data-svc-card>
+                <img class="svc-card__img" src="/images/services/assinatura.webp" srcset="/images/services/assinatura-600.webp 600w, /images/services/assinatura.webp 940w" sizes="(max-width: 900px) 100vw, 28vw" alt="Pessoa abrindo a porta de um SUV novo na garagem de casa" loading="lazy" decoding="async" />
+                <span class="svc-card__shade" aria-hidden="true"></span>
+                <span class="svc-card__title">Carro por assinatura</span>
+                <span class="svc-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" /></svg></span>
+              </a>
+              <a class="svc-card svc-card--half" href="#" data-svc-card>
+                <img class="svc-card__img" src="/images/services/seminovos.webp" srcset="/images/services/seminovos-600.webp 600w, /images/services/seminovos.webp 940w" sizes="(max-width: 900px) 100vw, 28vw" alt="Atendente da Localiza entregando a chave de um SUV a um cliente" loading="lazy" decoding="async" />
+                <span class="svc-card__shade" aria-hidden="true"></span>
+                <span class="svc-card__title">Seminovos</span>
+                <span class="svc-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" /></svg></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 5 — Perguntas frequentes -->
+      <section class="faq" id="duvidas" data-faq data-header-theme="light">
+        <div class="faq__inner">
+          <div class="faq__aside">
+            <div class="faq__sticky">
+              <p class="faq__eyebrow" data-faq-reveal>Dúvidas frequentes</p>
+              <h2 class="faq__title" data-faq-reveal>Perguntou,<br />a gente responde.</h2>
+              <p class="faq__lead" data-faq-reveal>Tudo o que você precisa saber antes de pegar a estrada.</p>
+
+              <div class="faq__help" data-faq-reveal>
+                <span class="faq__help-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4.5 13.5v-1.5a7.5 7.5 0 0 1 15 0v1.5" /><rect x="3.5" y="13" width="4" height="6" rx="1.6" /><rect x="16.5" y="13" width="4" height="6" rx="1.6" /><path d="M18.5 19c0 1.4-1.6 2.2-4.5 2.2" /></svg>
+                </span>
+                <div>
+                  <p class="faq__help-title">Ainda tem dúvidas?</p>
+                  <p class="faq__help-text">Fale com nosso time pelo chat ou pela central de atendimento.</p>
+                </div>
+                <a class="faq__help-cta" href="#">
+                  <span>Falar com a gente</span>
+                  <span class="faq__help-cta-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__main">
+            <div class="faq__filters" role="group" aria-label="Filtrar perguntas" data-faq-reveal>
+              <button type="button" class="faq__filter is-active" data-faq-filter="todas" aria-pressed="true">Todas</button>
+              <button type="button" class="faq__filter" data-faq-filter="reserva" aria-pressed="false">Reserva</button>
+              <button type="button" class="faq__filter" data-faq-filter="retirada" aria-pressed="false">Retirada e devolução</button>
+              <button type="button" class="faq__filter" data-faq-filter="pagamento" aria-pressed="false">Pagamento</button>
+              <button type="button" class="faq__filter" data-faq-filter="protecoes" aria-pressed="false">Proteções</button>
+            </div>
+
+            <div class="faq__list" data-faq-list>
+            <div class="faq__item is-open" data-faq-item data-cat="reserva">
+              <button type="button" class="faq__q" id="faq-q1" aria-expanded="true" aria-controls="faq-a1" data-faq-q>
+                <span class="faq__num">01</span>
+                <span class="faq__question">Quais documentos preciso para alugar um carro?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1" data-faq-a>
+                <p>CNH válida, documento de identidade e um cartão de crédito no nome de quem fez a reserva. Os requisitos de idade e tempo de habilitação aparecem antes de você confirmar.</p>
+              </div>
+            </div>
+            <div class="faq__item" data-faq-item data-cat="reserva">
+              <button type="button" class="faq__q" id="faq-q2" aria-expanded="false" aria-controls="faq-a2" data-faq-q>
+                <span class="faq__num">02</span>
+                <span class="faq__question">Posso alterar ou cancelar minha reserva?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2" data-faq-a>
+                <p>Pode sim. Pelo site ou pelo app, em Minhas reservas, você muda datas, horários e local de retirada. As condições de cancelamento dependem da tarifa escolhida.</p>
+              </div>
+            </div>
+            <div class="faq__item" data-faq-item data-cat="pagamento">
+              <button type="button" class="faq__q" id="faq-q3" aria-expanded="false" aria-controls="faq-a3" data-faq-q>
+                <span class="faq__num">03</span>
+                <span class="faq__question">Preciso ter cartão de crédito?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3" data-faq-a>
+                <p>Sim. O cartão de crédito do condutor principal é usado para a pré-autorização (caução), que é liberada depois da devolução do carro.</p>
+              </div>
+            </div>
+            <div class="faq__item" data-faq-item data-cat="retirada">
+              <button type="button" class="faq__q" id="faq-q4" aria-expanded="false" aria-controls="faq-a4" data-faq-q>
+                <span class="faq__num">04</span>
+                <span class="faq__question">Posso devolver o carro em outra cidade?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4" data-faq-a>
+                <p>Na maioria das agências, sim. Se houver taxa de retorno, ela aparece no resumo da reserva antes de você confirmar.</p>
+              </div>
+            </div>
+            <div class="faq__item" data-faq-item data-cat="retirada">
+              <button type="button" class="faq__q" id="faq-q5" aria-expanded="false" aria-controls="faq-a5" data-faq-q>
+                <span class="faq__num">05</span>
+                <span class="faq__question">O que acontece se eu atrasar a devolução?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5" data-faq-a>
+                <p>Existe uma tolerância curta no horário combinado. Depois dela, são cobradas horas extras e, a partir de um certo tempo, uma nova diária.</p>
+              </div>
+            </div>
+            <div class="faq__item" data-faq-item data-cat="retirada">
+              <button type="button" class="faq__q" id="faq-q6" aria-expanded="false" aria-controls="faq-a6" data-faq-q>
+                <span class="faq__num">06</span>
+                <span class="faq__question">O carro vem com o tanque cheio?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq__a" id="faq-a6" role="region" aria-labelledby="faq-q6" data-faq-a>
+                <p>O carro é entregue abastecido e deve voltar com o mesmo nível. Se voltar com menos, o combustível é cobrado na devolução.</p>
+              </div>
+            </div>
+            <div class="faq__item" data-faq-item data-cat="protecoes">
+              <button type="button" class="faq__q" id="faq-q7" aria-expanded="false" aria-controls="faq-a7" data-faq-q>
+                <span class="faq__num">07</span>
+                <span class="faq__question">Quais proteções estão disponíveis?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq__a" id="faq-a7" role="region" aria-labelledby="faq-q7" data-faq-a>
+                <p>Na reserva você escolhe entre proteções para o carro e para terceiros, além de opcionais como cadeirinha infantil e condutor adicional.</p>
+              </div>
+            </div>
+            <div class="faq__item" data-faq-item data-cat="protecoes">
+              <button type="button" class="faq__q" id="faq-q8" aria-expanded="false" aria-controls="faq-a8" data-faq-q>
+                <span class="faq__num">08</span>
+                <span class="faq__question">Posso incluir outro motorista?</span>
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq__a" id="faq-a8" role="region" aria-labelledby="faq-q8" data-faq-a>
+                <p>Pode. Inclua condutores adicionais na reserva ou na hora da retirada. Eles precisam apresentar os mesmos documentos do condutor principal.</p>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BANNER — App Localiza -->
+      <section class="app-banner" id="app" data-app-banner>
+        <img
+          class="app-banner__img"
+          src="/images/app/banner.webp"
+          srcset="/images/app/banner-1200.webp 1200w, /images/app/banner.webp 2400w"
+          sizes="(max-width: 900px) 100vw, 70vw"
+          alt="Casal sorrindo mostrando o app da Localiza no celular e a chave do carro"
+          loading="lazy"
+          decoding="async"
+          data-app-img
+        />
+
+        <div class="app-banner__content">
+          <p class="app-banner__eyebrow" data-app-reveal>App Localiza</p>
+          <h2 class="app-banner__title" data-app-reveal>Seu próximo carro<br />cabe no seu bolso.</h2>
+          <p class="app-banner__text" data-app-reveal>Reserve em poucos toques, acompanhe tudo pelo celular e saia dirigindo.</p>
+
+          <div class="app-banner__stores" data-app-reveal>
+            <a class="store-btn" href="#" aria-label="Baixar na App Store">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.9-.9-3.1-.8-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.2.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3.1.7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.8ZM14.2 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.6-1.3Z" /></svg>
+              <span><small>Baixar na</small>App Store</span>
+            </a>
+            <a class="store-btn" href="#" aria-label="Disponível no Google Play">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.8c0-.8.9-1.3 1.6-.9l12.2 7.4c.7.4.7 1.4 0 1.8L7.6 21.1c-.7.4-1.6-.1-1.6-.9V3.8Z" /></svg>
+              <span><small>Disponível no</small>Google Play</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer" data-footer>
+      <div class="footer__inner">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <img class="footer__logo" src="/images/localiza-logo.png" alt="Localiza" width="167" height="34" loading="lazy" />
+            <p class="footer__tagline">Seu caminho. Do seu jeito.</p>
+            <div class="footer__social">
+              <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="3.8" /><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" /></svg></a>
+              <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3" /><path d="M8 10.5v5.5M8 7.8v.2M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6v3" /></svg></a>
+              <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4" /><path d="m10.5 9.5 4 2.5-4 2.5v-5Z" fill="currentColor" /></svg></a>
+            </div>
+          </div>
+
+          <nav class="footer__col" aria-label="Aluguel">
+            <p class="footer__heading">Aluguel</p>
+            <ul>
+              <li><a href="#">Aluguel de carros</a></li>
+              <li><a href="#">Aluguel mensal</a></li>
+              <li><a href="#">Aeroportos</a></li>
+              <li><a href="#">Encontre uma agência</a></li>
+            </ul>
+          </nav>
+          <nav class="footer__col" aria-label="Serviços">
+            <p class="footer__heading">Serviços</p>
+            <ul>
+              <li><a href="#">Carro por assinatura</a></li>
+              <li><a href="#">Seminovos</a></li>
+              <li><a href="#">Localiza Empresas</a></li>
+              <li><a href="#">Gestão de frotas</a></li>
+            </ul>
+          </nav>
+          <nav class="footer__col" aria-label="Ajuda">
+            <p class="footer__heading">Ajuda</p>
+            <ul>
+              <li><a href="#">Central de atendimento</a></li>
+              <li><a href="#duvidas">Perguntas frequentes</a></li>
+              <li><a href="#">Gerenciar reserva</a></li>
+              <li><a href="#">Fale com a gente</a></li>
+            </ul>
+          </nav>
+
+          <div class="footer__col footer__col--app">
+            <p class="footer__heading">Baixe o app</p>
+            <a class="footer__store" href="#">App Store</a>
+            <a class="footer__store" href="#">Google Play</a>
+          </div>
+        </div>
+
+        <p class="footer__wordmark" aria-hidden="true" data-footer-word>Localiza</p>
+
+        <div class="footer__bottom">
+          <p>Redesign conceitual por Rafhael Corsini. Projeto de estudo, sem vínculo oficial com a Localiza.</p>
+          <ul>
+            <li><a href="#">Privacidade</a></li>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+          <a class="footer__top-link" href="#" data-back-top>
+            Voltar ao topo
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
